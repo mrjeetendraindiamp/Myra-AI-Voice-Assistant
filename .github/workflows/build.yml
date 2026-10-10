@@ -21,16 +21,16 @@ jobs:
           distribution: 'temurin'
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v4
-        with:
-        accept-android-sdk-licenses: true
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: '8.2'
+          uses: android-actions/setup-android@v4
+          with:
+            accept-android-sdk-licenses: true
 
-      - name: Generate Gradle Wrapper
+        - name: Setup Gradle
+          uses: gradle/actions/setup-gradle@v3
+          with:
+            gradle-version: '8.2'
         run: gradle wrapper --gradle-version 8.2
-        working-directory: .
+          working-directory: .
 
       - name: Build Release APK
         run: ./gradlew assembleRelease
